@@ -1,0 +1,18 @@
+.block
+  .content
+    %h2.title Login
+    .inner
+      - form_tag login_users_path, :method => :post, :class => 'form' do       
+        .group
+          = label_tag :email, "E-mail",:class => 'label'
+          = text_field_tag :email, {}, :class => 'text_field'
+        
+        .group
+          = label_tag :password, "Password",:class => 'label'
+          = password_field_tag :password, {}, :class => 'text_field'
+                
+        .group.navform.wat-cf
+          %button.button{:type => 'submit'}
+            = image_tag("web-app-theme/tick.png", :alt => "Save") 
+            Login        
+      = link_to "Don't have an account? Register now!", new_user_path 

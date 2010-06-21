@@ -1,0 +1,28 @@
+.block
+  .content
+    %h2.title Twitter Client
+    .inner
+      - if @twitter
+        .twitter_box
+          - form_tag tweet_twitter_path, :method => :post do
+            %h4="@#{@account} says:"
+            = text_area_tag 'tweet','', :id => 'twitter'
+            %br.clear
+            %div{:style => 'float:right'}
+              %span#count 
+              characters remaining
+            = submit_tag 'Tweet!', :id => 'submitbutton'
+          %br.clear
+          %br.clear
+          %br.clear
+        %h2 Timeline
+        - @tweets.each do |tweet|
+          .tweet
+            %strong
+              ="#{tweet.user.screen_name}:"
+            ="#{tweet.text}"
+      - else
+        %p
+          The application needs your permission to access your Twitter account. Please click the button below.
+        =link_to image_tag("http://apiwiki.twitter.com/f/1242697715/Sign-in-with-Twitter-darker.png"), signin_twitter_path
+          

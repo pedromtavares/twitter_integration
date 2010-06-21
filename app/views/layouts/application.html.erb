@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Twitter Integration</title>
+	<%= stylesheet_link_tag "web_app_theme", "web_app_theme_override", "themes/default/style", :cache => true %>
+    <%= javascript_include_tag :defaults, "jquery","jquery.NobleCount.js", :cache => true %>
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">Twitter Integration - by @pedromtavares</a></h1>
+      <div id="user-navigation">
+        <ul class="wat-cf">
+		  <% unless current_user %>
+          		<li><%= link_to 'Login',login_users_path, :class => 'logout' %></li>
+		  <% else%>
+				<li style="color:white">Logged in as <%=current_user.email%></li>	
+				<li><%= link_to 'Logoff',logoff_users_path, :class => 'logout' %></li>
+		  <% end %>
+        </ul>
+      </div>      
+      <div id="main-navigation">
+        <ul class="wat-cf">
+        	<li><%=link_to 'Twitter', twitter_index_path%></li>
+			<li><%=link_to 'Register', new_user_path unless current_user%></li>
+        </ul>
+      </div>
+    </div>    
+    <div id="wrapper" class="wat-cf">
+      <div class="flash">
+        <% flash.each do |type, message| -%>
+          <div class="message <%= type %>">
+            <p><%= message %></p>
+          </div>
+        <% end -%>
+      </div>
+      <div id="main">
+        <%= yield %>
+        <div id="footer">
+          <div class="block center">
+            <p>This is an example application mentioned in this blog post by Pedro Mateus Tavares. Happy tweeting :P</p>
+          </div>      
+        </div>
+      </div>
+    </div>    
+  </div>
+</body>
+</html>

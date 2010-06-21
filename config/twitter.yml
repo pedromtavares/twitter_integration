@@ -1,0 +1,6 @@
+--- 
+consumer_secret: hAtqObhFBCzUMzWY1xOyUh2BnIwkGU8L3cP2mowo
+consumer_token: UZxa8E4Gk6FG3UjhY6ORQ
+callback_urls: 
+  production: http://dev.twipler.com:3000/twitter/auth
+  development: http://dev.twipler.com:3000/twitter/auth
