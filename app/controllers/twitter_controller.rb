@@ -6,7 +6,7 @@ class TwitterController < ApplicationController
   def index
     @twitter = @wrapper.get_twitter
     if @twitter
-      @account = @twitter.user_timeline(:count => 1).first.user.screen_name
+      @account = @twitter.user_timeline.first.user.screen_name
       @tweets = @twitter.home_timeline
     end
   end
