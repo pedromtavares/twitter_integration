@@ -4,10 +4,12 @@ class TwitterController < ApplicationController
   before_filter :twitter_wrapper, :login_required
 
   def index
-    @twitter = @wrapper.get_twitter
-    if @twitter
+    begin
+      @twitter = @wrapper.get_twitter
       @account = @twitter.user_timeline.first.user.screen_name
       @tweets = @twitter.home_timeline
+    rescue
+      @twitter = nil
     end
   end
   
@@ -32,16 +34,12 @@ class TwitterController < ApplicationController
   end
   
   def tweet
-    @twitter = @wrapper.get_twitter
-    if @twitter
-      begin
-        @twitter.update params[:tweet]
-        flash[:notice] = "Tweet successfully sent!"
-      rescue
-        flash[:error] = "Error sending the tweet!"
-      end
-    else
-      flash[:error] = "Your connection with Twitter was lost. Please sign in again."
+    begin
+      @twitter = @wrapper.get_twitter
+      @twitter.update params[:tweet]
+      flash[:notice] = "Tweet successfully sent!"
+    rescue
+      flash[:error] = "Error sending the tweet! Twitter might be unstable. Please try again."
     end
     redirect_to :action => :index
   end

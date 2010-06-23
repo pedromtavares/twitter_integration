@@ -27,11 +27,7 @@
    def get_twitter
      @auth.authorize_from_access(@user.access_token, @user.access_secret)
      twitter = Twitter::Base.new @auth
-     begin
-      twitter.home_timeline(:count => 1)
-      twitter
-     rescue
-      nil
-     end
+     twitter.home_timeline(:count => 1)
+     twitter
    end
  end
