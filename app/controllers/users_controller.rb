@@ -2,7 +2,7 @@
 class UsersController < ApplicationController
   
   def index
-    if current_user && current_user.admin
+    if current_user && current_user.admin==0
       @users = User.all 
     else
       redirect_to twitter_index_path
