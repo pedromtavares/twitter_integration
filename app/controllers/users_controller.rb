@@ -1,8 +1,16 @@
 
 class UsersController < ApplicationController
+  
+  def index
+    if current_user && current_user.admin
+      @users = User.all 
+    else
+      redirect_to twitter_index_path
+    end
+  end
 
   def new
-    redirect_to twitter_index_path if current_user
+    redirect_to twitter_index_path if current_user && current_user.admin == false
     @user = User.new
   end
   

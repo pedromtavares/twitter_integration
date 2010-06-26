@@ -113,7 +113,7 @@ hr {
 }
 
 .secondary-navigation li a:hover {
-  background: #470E0E;
+  background-color:#557C7C;
 }
 
 #main-navigation ul li.active a:link, #main-navigation ul li.active a:visited, #main-navigation ul li.active a:hover, #main-navigation ul li.active a:active {
@@ -121,12 +121,12 @@ hr {
 }
 
 .secondary-navigation {
-  background: #7A1818;
+  background: #5AA5BC;
   border-bottom-color: #262626;
 }
 
 .secondary-navigation ul li.active, .secondary-navigation ul li.active a:hover {
-  background-color: #262626;
+  background-color:#357C7C;
 }
 
 #footer .block {  
