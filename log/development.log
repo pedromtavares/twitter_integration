@@ -9598,3 +9598,53 @@ Processing UsersController#index (for 127.0.0.1 at 2010-06-25 23:12:51) [GET]
 Rendering template within layouts/application
 Rendering users/index
 Completed in 14ms (View: 4, DB: 1) | 200 OK [http://0.0.0.0/users]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#logoff (for 127.0.0.1 at 2010-06-25 23:15:10) [GET]
+Redirected to http://0.0.0.0:3003/
+Completed in 2ms (DB: 0) | 302 Found [http://0.0.0.0/users/logoff]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing TwitterController#index (for 127.0.0.1 at 2010-06-25 23:15:10) [GET]
+Redirected to http://0.0.0.0:3003/users/login
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 2ms (DB: 0) | 302 Found [http://0.0.0.0/]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#login (for 127.0.0.1 at 2010-06-25 23:15:10) [GET]
+Rendering template within layouts/application
+Rendering users/login
+
+ActionView::TemplateError (undefined method `admin?' for nil:NilClass) on line #37 of app/views/layouts/application.html.erb:
+34:       <div id="main-navigation">
+35:         <ul class="wat-cf">
+36:         	<li><%=link_to 'Twitter', twitter_index_path%></li>
+37: 			<li><%=link_to 'Users', twitter_index_path if current_user.admin?%></li>
+38: 			<li><%=link_to 'Register', new_user_path unless current_user%></li>
+39:         </ul>
+40:       </div>
+
+    app/views/layouts/application.html.erb:37
+    haml (2.2.17) lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (2.2.17) lib/haml/helpers/action_view_mods.rb:13:in `render'
+    haml (2.2.17) rails/./lib/sass/plugin/rails.rb:19:in `process'
+    -e:2:in `load'
+    -e:2
+
+Rendered rescues/_trace (32.0ms)
+Rendered rescues/_request_and_response (0.2ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#login (for 127.0.0.1 at 2010-06-25 23:15:33) [GET]
+Rendering template within layouts/application
+Rendering users/login
+Completed in 55ms (View: 54, DB: 0) | 200 OK [http://0.0.0.0/users/login]
