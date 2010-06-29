@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   
   def index
     if current_user && current_user.admin!=0
-      @users = User.all 
+      @users = User.all(:order => "id ASC")
     else
       redirect_to twitter_index_path
     end
